@@ -1,5 +1,4 @@
 ## react-cnode
-![yemian](https://github.com/False-L/react-cnode/blob/master/src/img/cnode-w.gif)
 ## 使用方式
 - 下载到本地或者 <code>$ git clone https://github.com/False-L/react-cnode.git</code>
 - $ cd 目标目录
