@@ -10,7 +10,7 @@ module.exports = {
       contentBase: path.join(__dirname, "build"),//devServer目录
       compress: true,//开启gzip
       port: 9000,
-      clientLogLevel: "none",//阻止消息产生
+      clientLogLevel: "none",//阻止消
   },
   module: {
     loaders: [
@@ -20,26 +20,22 @@ module.exports = {
       loader: 'babel-loader',
       query: {
         presets: ['es2015','react', 'stage-3'],
-        plugins: [
-            ['import', [{ libraryName: "antd", style: 'css' }]],
-              ]
+        "plugins": []
       }
     },{
         test: /\.css$/,
         exclude: /^node_modules$/,
-        loader:  'style-loader!css-loader' 
+        loader: 'style-loader!css-loader'
     },{
     test: /\.(png|jpg|gif|svg)$/,
-    loader: 'url-loader',
-    options:{
-      limit: 8192, // 这里的 limit=8192 表示用 base64 编码 <= ８K 的图像
-      name: './images/[name].[ext]'
-      }
+    loader: 'url-loader?limit=8192' // 这里的 limit=8192 表示用 base64 编码 <= ８K 的图像
     },
     { test: /\.less$/,
       loader: 'style-loader!css-loader!less-loader'
     }
     ]
   },
-  plugins:[]
+  plugins:[
+   
+  ]
 }
