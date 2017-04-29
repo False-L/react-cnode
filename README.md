@@ -1,4 +1,7 @@
 ## react-cnode
+- react v15.5.3
+- react-router v4.0.0
+- webpack v2.3.3
 ## 使用方式
 - 下载到本地或者 <code>$ git clone https://github.com/False-L/react-cnode.git</code>
 - $ cd 目标目录
