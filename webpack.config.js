@@ -1,10 +1,10 @@
-var webpack = require('webpack');
+﻿var webpack = require('webpack');
 var path = require('path');
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   devServer:{
       contentBase: path.join(__dirname, "build"),//devServer目录
