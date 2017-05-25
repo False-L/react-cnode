@@ -11,21 +11,16 @@ class User extends Component{
          this.state = { data:{} };
     }
     componentDidMount(){
-        console.log(this.props)
         const userid=this.props.match.params.loginname
-        console.log(userid)
-        return fetch(`https://cnodejs.org/api/v1/user/${userid}`)
+        fetch(`https://cnodejs.org/api/v1/user/${userid}`)
         .then(res=>res.json())
         .then(json=>this.setState({data:json.data}))
     }
  render(){
-     console.log(this.state)
      const {data}=this.state
     return(
         <div className='user'>
             <div className="user_info">
-                <div className="header">
-                </div>
                 <div className="userinfo">
                     <div className="user_avatar">
                         <img src={data.avatar_url} title={data.loginname} alt={data.loginname}/>
@@ -33,14 +28,12 @@ class User extends Component{
                     <span>{this.state.data.loginname}</span>
                     <div>github:<a href={`https://github.com/${data.githubUsername}`}>{this.state.data.githubUsername}</a></div>
                     <span>积分：{this.state.data.score}</span>
-                    <p>注册时间  {moment(this.state.data.create_at).startOf('hour').fromNow()}</p>
+                    <p>注册时间  {moment(this.state.data.create_at).format('YYYY-MM-DD')}</p>
                 </div>
             </div>
             <div className="user_topics">
-                <div className="header">
-                    <h2>创建的话题</h2>
-                </div>
                 <div className="userTopics">
+                    发表的话题
                     <ul>
                         {
                             data.recent_topics?data.recent_topics.map((topic,i)=>(
@@ -52,11 +45,8 @@ class User extends Component{
                     </ul>
                 </div>
             </div>
-            <div className="user_replies">
-                <div className="header">
-                    <h2>参与的话题</h2>
-                </div>
                 <div className="userReply">
+                    参与的话题
                     <ul>
                     {
                         data.recent_replies?data.recent_replies.map((reply,i)=>(
@@ -65,7 +55,6 @@ class User extends Component{
                     }
                     </ul>
                 </div>
-            </div>
         </div>
     ) 
  }

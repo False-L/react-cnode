@@ -2,11 +2,13 @@ import {combineReducers} from 'redux'
 import { REQUEST_POSTS,
         RECEIVE_POSTS,
         SELECT_CNODE,
-        INVALIDATE_CNODE
+        INVALIDATE_CNODE,
+        SIGNIN_SUCCESS,
+        SIGNOUT_SUCCESS
      } from './actions'
 
 //action类型
-const selectedCnode=(state='all',action)=>{
+function selectedCnode(state='all',action){
     switch(action.type){
         case SELECT_CNODE:
             return action.cnode
@@ -14,13 +16,22 @@ const selectedCnode=(state='all',action)=>{
             return state
     }
 }
-
+function loginCnode(state={login:false},action){
+    switch(action.type){
+            case SIGNIN_SUCCESS:
+                return {islogin:true}
+            case SIGNOUT_SUCCESS:
+                return {islogin:false}
+            default:
+            return state
+    }
+}
 //
-const posts=(state={
+function posts(state={
     isFetching: false,
     didInvalidate: false,
     items:[]
-},action)=>{
+},action){
     switch(action.type){
         case INVALIDATE_CNODE:
             return{
@@ -38,13 +49,13 @@ const posts=(state={
                 ...state,
                 isFetching:false,
                 didInvalidate:false,
-                items:action.posts,
+                items:action.posts
             }
         default:
             return state
     }
 }
-const postsByCnode = (state = { }, action) => {
+function postsByCnode (state = { }, action) {
   switch (action.type) {
     case INVALIDATE_CNODE:
     case RECEIVE_POSTS:
@@ -57,8 +68,9 @@ const postsByCnode = (state = { }, action) => {
       return state
   }
 }
+
 const Reducer= combineReducers(
-    {postsByCnode,selectedCnode}
+    {postsByCnode,selectedCnode,loginCnode}
 )
 export default Reducer
 

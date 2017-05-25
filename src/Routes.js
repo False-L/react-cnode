@@ -1,59 +1,33 @@
 import React from 'react'
 import Home from './components/Home'
-import Topic from './components/Topic'
-import User from './components/User'
 import {HashRouter as Router ,Route ,Switch,Redirect } from 'react-router-dom'
-import CnodeHeader from './components/CnodeHeader'
-import App from './App'
-
-
-const Start= () => (
-  <div>
-    <h2>Start</h2>
-  </div>
-)
-const Api= () => (
-  <div>
-    <h2>Api</h2>
-  </div>
-)
-const About = () => (
-  <div>
-    <h2>About</h2>
-  </div>
-)
-const SignUp= () => (
-  <div>
-    <h2>SignUp</h2>
-  </div>
-)
-const SignIn= () => (
-  <div>
-    <h2>SignIn</h2>
-  </div>
-)
-
+import App from './components/App'
+import Login from './components/Login'
+import Topic from './components/Topic'
+import CreateTopic from './components/CreateTopic'
+import User from './components/User'
 const Routes =() =>(
     <Router >
-        <div>
-           <App />
-            <CnodeHeader />
+        <App>
+        <div className="container" >
             <Switch>
                 <Route exact path='/' component={Home} />
-                <Route  path='/getstart' component={Start} />
-                <Route  path='/api' component={Api} />
-                <Route  path='/about' component={About} />
-                <Route  path='/signup' component={SignUp} />
-                <Route  path='/signin' component={SignIn} />
-                <Route path='/topic/:topicid' component={Topic} />
+                <Route path='/login' component={Login} />
+                <Route path='/topic/create' component={CreateTopic} />
+                <Route path='/topic/:id' component={Topic} />
                 <Route path='/user/:loginname' component={User} />
+                {/*
+                <Route path='/messages' component={Messages} />
+                
+                <Route path='/topic_collect/:loginname' component={Collect} />*/}
                 <Redirect from='*' to="/" />
             </Switch>
         </div>
+        </App>
+       
     </Router>
+    
 )
 
 //
-
-
 export default Routes

@@ -1,23 +1,26 @@
 {
-  "name": "react-cnode",
+  "name": "counter-increase-demo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
+    "start": "webpack-dev-server --hot",
     "build": "webpack"
   },
-  "author": "false-l",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "antd": "^2.9.3",
+    "isomorphic-fetch": "^2.2.1",
     "less": "^2.7.2",
     "moment": "^2.18.1",
+    "node-fetch": "^1.6.3",
+    "normalize": "^0.3.1",
+    "normalizr": "^3.2.3",
     "prop-types": "^15.5.8",
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
     "react-redux": "^5.0.3",
-    "react-router": "^4.0.0",
     "redux": "^3.6.0"
   },
   "devDependencies": {
@@ -39,6 +42,7 @@
     "svg-loader": "0.0.2",
     "url-loader": "^0.5.8",
     "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "whatwg-fetch": "^2.0.3"
   }
 }

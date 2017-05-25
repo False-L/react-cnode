@@ -1,5 +1,7 @@
-﻿var webpack = require('webpack');
+//var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
   output: {
@@ -10,13 +12,14 @@ module.exports = {
       contentBase: path.join(__dirname, "build"),//devServer目录
       compress: true,//开启gzip
       port: 9000,
+      inline:true,
       clientLogLevel: "none",//阻止消息产生
   },
   module: {
     loaders: [
     {
       test: /\.jsx?$/,
-      exclude: /node_modules/,
+      exclude: /node_modules/,//excluode:忽略这个目录打包
       loader: 'babel-loader',
       query: {
         presets: ['es2015','react', 'stage-3'],
@@ -26,8 +29,8 @@ module.exports = {
       }
     },{
         test: /\.css$/,
-        exclude: /^node_modules$/,
-        loader:  'style-loader!css-loader' 
+        exclude: /^node_modules$/,//excluode:忽略这个目录打包
+        loader:  ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
     },{
     test: /\.(png|jpg|gif|svg)$/,
     loader: 'url-loader',
@@ -41,5 +44,7 @@ module.exports = {
     }
     ]
   },
-  plugins:[]
+  plugins:[
+    new ExtractTextPlugin("main.css"),
+  ]
 }
